@@ -1,0 +1,17 @@
+{
+    "Version": "0.0.1",
+    "Title": "vite-react-admin",
+    "FixedHeader": true,
+    "Theme": "default",
+    "DarkMode": false,
+    "Grey": false,
+    "Weak": false,
+    "HideTabs": false,
+    "SidebarStatus": true,
+    "ThemeColor": "#409EFF",
+    "ShowLogo": true,
+    "ShowModel": "smart",
+    "MenuArrowIconNoTransition": true,
+    "CachingAsyncRoutes": false,
+    "TooltipEffect": "light"
+}
