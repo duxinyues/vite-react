@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-02-25 23:57:27
+ * @LastEditTime: 2023-02-28 19:59:06
  * @FilePath: \vite-react\vite.config.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -10,7 +10,7 @@
 import { defineConfig, loadEnv, UserConfigExport, ConfigEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
-import {viteBuildInfo} from "./build/info"
+// import {viteBuildInfo} from "./build/info"
 
 const root: string = process.cwd();
 
@@ -24,12 +24,12 @@ const alias: Record<string, string> = {
 };
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }: ConfigEnv): UserConfigExport => {
+export default defineConfig(({ mode }) => {
   const { VITE_PUBLIC_PATH, VITE_PORT } = loadEnv(mode, root, "");
   return {
     base: VITE_PUBLIC_PATH,
     root,
-    plugins: [react(),viteBuildInfo()],
+    plugins: [react()],
     resolve: {
       alias,
     },
@@ -41,6 +41,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfigExport => {
       open: true,
       // 本地跨域代理 https://cn.vitejs.dev/config/server-options.html#server-proxy
       proxy: {},
+      hmr: true,
     },
     build: {
       sourcemap: false,

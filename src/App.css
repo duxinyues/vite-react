@@ -1,42 +1,34 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  height:100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.progress {
+  --r1: 154%;
+  --r2: 68.5%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background:
+    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #269af2 80%) center left,
+    radial-gradient(var(--r1) var(--r2) at bottom, #269af2 79.5%, #0000 80%) center center,
+    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #269af2 80%) center right,
+    #ccc;
+  background-size: 50.5% 220%;
+  background-position: -100% 0%, 0% 0%, 100% 0%;
+  background-repeat: no-repeat;
+  animation: p9 2s infinite linear;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes p9 {
+  33% {
+    background-position: 0% 33%, 100% 33%, 200% 33%
   }
-  to {
-    transform: rotate(360deg);
+
+  66% {
+    background-position: -100% 66%, 0% 66%, 100% 66%
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  100% {
+    background-position: 0% 100%, 100% 100%, 200% 100%
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
