@@ -2,30 +2,35 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-02-28 22:05:55
+ * @LastEditTime: 2023-03-01 01:15:50
  * @FilePath: \vite-react\src\App.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 import { lazy, Suspense } from "react";
-import { useRoutes } from "react-router-dom";
+import { useRoutes, HashRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import "./App.css";
-import Layout from "./views/layout";
-// const Layout = lazy(() => import("@/views/layout"));
+import useTheme from "./hooks/useTheme";
+// import Layout from "./views/layout";
+const Layout = lazy(() => import("@/views/layout"));
 const loadRouter = (children: React.ReactElement) => (
   <Suspense
-    fallback={<div className="react-container"><div className="progress"></div></div>}
+    fallback={
+      <div className="react-container">
+        <div className="progress"></div>
+      </div>
+    }
   >
     {children}
   </Suspense>
 );
-
-function App() {
+const Router = () => {
   const element = useRoutes([
     {
       path: "/",
-      element: <Layout />,
-      
+      element: loadRouter(<Layout />),
+
       children: [
         {
           path: "/",
@@ -39,6 +44,18 @@ function App() {
     },
   ]);
   return element;
+};
+function App(props: any) {
+  console.log("App props", props);
+  const { themeConfig } = props;
+  useTheme(themeConfig);
+  return (
+    <HashRouter>
+      <Router />
+    </HashRouter>
+  );
 }
-
-export default App;
+const mapStateToProps = (state: any) => {
+  return state.global;
+};
+export default connect(mapStateToProps)(App);
