@@ -17,18 +17,22 @@ $colors: (
   height: 100%;
   .sider {
     background-color: transparent;
+    .logo-box {
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 25px;
+        height: 25px;
+      }
+    }
   }
   .content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px;
     overflow-y: auto;
-    .bar {
-      width: 100px;
-      height: 100px;
-      border: 1px solid black;
-    }
   }
 }
 
@@ -40,4 +44,28 @@ $colors: (
     cursor: pointer;
     text-align: center;
   }
+}
+
+.theme-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0;
+  span {
+    font-size: 14px;
+  }
+  .ant-switch {
+    width: 46px;
+  }
+}
+.divider {
+  margin: 0 0 22px !important;
+  font-size: 15px !important;
+  .anticon {
+    margin-right: 10px;
+  }
+}
+.ant-divider-with-text::before,
+.ant-divider-with-text::after {
+  border-top: 1px solid #dcdfe6 !important;
 }

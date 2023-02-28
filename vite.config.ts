@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-02-28 19:59:06
+ * @LastEditTime: 2023-03-01 00:05:20
  * @FilePath: \vite-react\vite.config.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -10,7 +10,8 @@
 import { defineConfig, loadEnv, UserConfigExport, ConfigEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
-// import {viteBuildInfo} from "./build/info"
+import {viteBuildInfo} from "./build/info";
+import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import'
 
 const root: string = process.cwd();
 
@@ -29,7 +30,9 @@ export default defineConfig(({ mode }) => {
   return {
     base: VITE_PUBLIC_PATH,
     root,
-    plugins: [react()],
+    plugins: [react(),viteBuildInfo(),createStyleImportPlugin({
+      resolves:[AntdResolve()]
+    })],
     resolve: {
       alias,
     },
@@ -37,11 +40,11 @@ export default defineConfig(({ mode }) => {
     server: {
       host: "0.0.0.0",
       https: false,
-      port: 8088,
+      port: VITE_PORT,
       open: true,
       // 本地跨域代理 https://cn.vitejs.dev/config/server-options.html#server-proxy
       proxy: {},
-      hmr: true,
+      // hmr: true,
     },
     build: {
       sourcemap: false,
