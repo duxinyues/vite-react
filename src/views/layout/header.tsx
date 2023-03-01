@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-28 20:43:11
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-02-28 21:40:15
+ * @LastEditTime: 2023-03-01 16:17:49
  * @FilePath: \vite-react\src\views\layout\header.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -24,7 +24,7 @@ function AdHeader(props: any) {
         <Space>
           <FullScreen />
           <Theme />
-          <span className="username">Hooks</span>
+          <span className="username">读心悦</span>
           <AvatarIcon />
         </Space>
       </div>

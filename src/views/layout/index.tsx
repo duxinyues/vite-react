@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:53:32
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-02-28 23:48:31
+ * @LastEditTime: 2023-03-01 16:11:51
  * @FilePath: \vite-react\src\views\layout\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -18,6 +18,7 @@ import { connect } from "react-redux";
 const { Content, Footer, Sider } = Layout;
 
 function Container(props: any) {
+  const { footer, isCollapse } = props;
   const navigate = useNavigate();
   const onChangeRouter = (router: string) => {
     navigate(router);
@@ -47,7 +48,7 @@ function Container(props: any) {
   return (
     <Layout className="layout">
       <Layout>
-        <Sider className="sider" collapsed={props.isCollapse} theme="dark">
+        <Sider className="sider" collapsed={isCollapse} theme="dark">
           <Logo />
           <Menu
             mode="inline"
@@ -63,9 +64,11 @@ function Container(props: any) {
           <WaterMarkLayout>
             <Outlet />
           </WaterMarkLayout>
-          <Footer style={{ textAlign: "center" }}>
-            React 实例 {new Date().getFullYear()}
-          </Footer>
+          {footer && (
+            <Footer style={{ textAlign: "center" }}>
+              React 实例 {new Date().getFullYear()}
+            </Footer>
+          )}
         </Content>
       </Layout>
     </Layout>
@@ -74,7 +77,8 @@ function Container(props: any) {
 
 const mapStateToProps = (state: any) => {
   const { menuState, isCollapse } = state.menus;
-  return { menus: menuState, isCollapse };
+  const { footer } = state.global;
+  return { menus: menuState, isCollapse, footer };
 };
 
 export default connect(mapStateToProps)(Container);

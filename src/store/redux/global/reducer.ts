@@ -39,6 +39,16 @@ const globalReducer = (state = globalState, action: AnyAction) => {
         ...state,
         token: action.payload,
       };
+    case types.SET_WEAKORGRAY:
+      return {
+        ...state,
+        weakOrGray: action.payload,
+      };
+    case types.SET_VISIBLE_FOOTER:
+      return {
+        ...state,
+        footer: action.payload,
+      };
     default:
       return state;
   }

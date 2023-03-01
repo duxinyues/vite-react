@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 01:15:50
+ * @LastEditTime: 2023-03-01 16:04:44
  * @FilePath: \vite-react\src\App.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -47,8 +47,8 @@ const Router = () => {
 };
 function App(props: any) {
   console.log("App props", props);
-  const { themeConfig } = props;
-  useTheme(themeConfig);
+  const { weakOrGray } = props;
+  useTheme(weakOrGray);
   return (
     <HashRouter>
       <Router />
