@@ -2,14 +2,12 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-28 21:48:56
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-02-28 22:06:09
+ * @LastEditTime: 2023-03-01 17:55:12
  * @FilePath: \vite-react\src\views\layout\components\AvatarIcon.tsx
  * @Description: 用户头像
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
-import { useRef } from "react";
-import { connect } from "react-redux";
-import { Avatar, Modal, Menu, Dropdown, message } from "antd";
+import { Avatar, Modal, Dropdown, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import type { MenuProps } from "antd";
 
@@ -19,7 +17,18 @@ interface ModalProps {
 
 const AvatarIcon = () => {
   const navigate = useNavigate();
-  const logout = () => {};
+  const logout = () => {
+    Modal.confirm({
+      title: "温馨提示！",
+      content: "是否确认退出登录？",
+      okText: "确定",
+      cancelText: "取消",
+      onOk: () => {
+        navigate("/login");
+        localStorage.clear();
+      },
+    });
+  };
   const items: MenuProps["items"] = [
     {
       key: "1",
@@ -49,7 +58,10 @@ const AvatarIcon = () => {
   return (
     <>
       <Dropdown menu={{ items }}>
-       <Avatar size={"large"} src="https://avatars.githubusercontent.com/u/29058884?v=4" />
+        <Avatar
+          size={"large"}
+          src="https://profile-avatar.csdnimg.cn/068bb7948d2941d584efb796a79bb704_xuelian3015.jpg!1"
+        />
       </Dropdown>
     </>
   );

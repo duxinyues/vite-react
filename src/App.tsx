@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 16:04:44
+ * @LastEditTime: 2023-03-01 17:44:53
  * @FilePath: \vite-react\src\App.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -12,8 +12,9 @@ import { useRoutes, HashRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.css";
 import useTheme from "./hooks/useTheme";
-// import Layout from "./views/layout";
+
 const Layout = lazy(() => import("@/views/layout"));
+const Login = lazy(() => import("@/views/login"));
 const loadRouter = (children: React.ReactElement) => (
   <Suspense
     fallback={
@@ -25,7 +26,7 @@ const loadRouter = (children: React.ReactElement) => (
     {children}
   </Suspense>
 );
-const Router = () => {
+const Router = ({ token }: any) => {
   const element = useRoutes([
     {
       path: "/",
@@ -41,6 +42,10 @@ const Router = () => {
           element: loadRouter(<div>uuuu</div>),
         },
       ],
+    },
+    {
+      path: "/login",
+      element: loadRouter(<Login />),
     },
   ]);
   return element;

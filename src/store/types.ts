@@ -16,3 +16,4 @@ export const SET_TOKEN = "SET_TOKEN";
 export const SET_DARK = "SET_DARK";
 export const SET_WEAKORGRAY = "SET_WEAKORGRAY"; // 切换颜色主题
 export const SET_VISIBLE_FOOTER = "SET_VISIBLE_FOOTER"; //页脚
+export const SET_USERINFO = "SET_USERINFO"; //用户信息

@@ -49,6 +49,11 @@ const globalReducer = (state = globalState, action: AnyAction) => {
         ...state,
         footer: action.payload,
       };
+    case types.SET_USERINFO:
+      return {
+        ...state,
+        userInfo: action.payload,
+      };
     default:
       return state;
   }

@@ -7,6 +7,7 @@
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
+import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Layout, Menu, MenuProps } from "antd";
 import WaterMarkLayout from "./waterMarkLayout";
@@ -18,11 +19,12 @@ import { connect } from "react-redux";
 const { Content, Footer, Sider } = Layout;
 
 function Container(props: any) {
-  const { footer, isCollapse } = props;
+  const { footer, isCollapse, token } = props;
   const navigate = useNavigate();
   const onChangeRouter = (router: string) => {
     navigate(router);
   };
+
   const items: MenuProps["items"] = props.menus.map(
     (item: any, index: number) => {
       if (item.children) {
@@ -45,6 +47,11 @@ function Container(props: any) {
       };
     }
   );
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
   return (
     <Layout className="layout">
       <Layout>
@@ -77,8 +84,8 @@ function Container(props: any) {
 
 const mapStateToProps = (state: any) => {
   const { menuState, isCollapse } = state.menus;
-  const { footer } = state.global;
-  return { menus: menuState, isCollapse, footer };
+  const { footer, token } = state.global;
+  return { menus: menuState, isCollapse, footer, token };
 };
 
 export default connect(mapStateToProps)(Container);

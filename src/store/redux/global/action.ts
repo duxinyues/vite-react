@@ -34,3 +34,8 @@ export const setFooter = (footer: boolean) => ({
   type: types.SET_VISIBLE_FOOTER,
   payload: footer,
 });
+
+export const setUserInfo = (userInfo: any) => ({
+  type: types.SET_USERINFO,
+  payload: userInfo,
+});
