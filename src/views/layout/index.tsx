@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:53:32
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 16:11:51
+ * @LastEditTime: 2023-03-01 21:34:50
  * @FilePath: \vite-react\src\views\layout\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 const { Content, Footer, Sider } = Layout;
 
 function Container(props: any) {
+  console.log("props.menus", props.menus);
   const { footer, isCollapse, token } = props;
   const navigate = useNavigate();
   const onChangeRouter = (router: string) => {
@@ -69,10 +70,27 @@ function Container(props: any) {
         <Content className="content">
           <AdHeader />
           <WaterMarkLayout>
-            <Outlet />
+            <div
+              style={{
+                margin: "10px",
+                background: "#fff",
+                height: `calc(100% - ${footer?'10':'30'}px)`,
+              }}
+            >
+              <Outlet />
+            </div>
           </WaterMarkLayout>
           {footer && (
-            <Footer style={{ textAlign: "center" }}>
+            <Footer
+              style={{
+                textAlign: "center",
+                background: "#fff",
+                marginTop: "10px",
+                padding: "0",
+                height: "30px",
+                lineHeight: "30px",
+              }}
+            >
               React 实例 {new Date().getFullYear()}
             </Footer>
           )}

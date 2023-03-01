@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-28 21:48:56
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 17:55:12
+ * @LastEditTime: 2023-03-01 18:37:17
  * @FilePath: \vite-react\src\views\layout\components\AvatarIcon.tsx
  * @Description: 用户头像
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -37,19 +37,6 @@ const AvatarIcon = () => {
     },
     {
       key: "2",
-      label: <span className="dropdown-item">个人信息</span>,
-      onClick: () => {},
-    },
-    {
-      key: "3",
-      label: <span className="dropdown-item">修改密码</span>,
-      onClick: () => {},
-    },
-    {
-      type: "divider",
-    },
-    {
-      key: "4",
       label: <span className="dropdown-item">退出登录</span>,
       onClick: logout,
     },

@@ -2,13 +2,18 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:35:23
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-02-28 23:04:27
+ * @LastEditTime: 2023-03-01 18:43:12
  * @FilePath: \vite-react\src\store\redux\menu\menu.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 import * as types from "@/store/types";
 const menuState = [
+  {
+    title: "首页",
+    key: "home",
+    router: "/",
+  },
   {
     title: "组件",
     key: "component",
@@ -37,6 +42,6 @@ export default function menuReducer(
         isCollapse: action.payload,
       };
     default:
-      return state;
+      return {...state};
   }
 }

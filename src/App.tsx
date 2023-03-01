@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 17:44:53
+ * @LastEditTime: 2023-03-01 22:57:00
  * @FilePath: \vite-react\src\App.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -15,6 +15,11 @@ import useTheme from "./hooks/useTheme";
 
 const Layout = lazy(() => import("@/views/layout"));
 const Login = lazy(() => import("@/views/login"));
+const Dashboard = lazy(() => import("@/views/dashboard"));
+const DataVisualize = lazy(() => import("@/views/dashboard/dataVisualize"));
+const Home = lazy(() => import("@/views/home"));
+const NoMatch = lazy(() => import("@/components/NoMatch"));
+
 const loadRouter = (children: React.ReactElement) => (
   <Suspense
     fallback={
@@ -35,11 +40,11 @@ const Router = ({ token }: any) => {
       children: [
         {
           path: "/",
-          element: loadRouter(<div>首页</div>),
+          element: loadRouter(<Home />),
         },
         {
           path: "/dashboard",
-          element: loadRouter(<div>uuuu</div>),
+          element: loadRouter(<Dashboard />),
         },
       ],
     },
@@ -47,6 +52,11 @@ const Router = ({ token }: any) => {
       path: "/login",
       element: loadRouter(<Login />),
     },
+    {
+      path: "/dataVisualize",
+      element: loadRouter(<DataVisualize />),
+    },
+    { path: "*", element: loadRouter(<NoMatch />) },
   ]);
   return element;
 };
