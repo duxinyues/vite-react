@@ -19,7 +19,6 @@ import { connect } from "react-redux";
 const { Content, Footer, Sider } = Layout;
 
 function Container(props: any) {
-  console.log("props.menus", props.menus);
   const { footer, isCollapse, token } = props;
   const navigate = useNavigate();
   const onChangeRouter = (router: string) => {

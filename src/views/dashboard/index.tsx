@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 18:08:07
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 21:10:33
+ * @LastEditTime: 2023-03-02 09:15:45
  * @FilePath: \vite-react\src\views\dashboard\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -11,8 +11,7 @@ import { useState, useEffect, useRef } from "react";
 import Echarts from "@/components/HocEcharts";
 import "./index.scss";
 import { createArray } from "@/uitls";
-import AreaEcharts from "@/components/areaEcharts";
-import Curve from "@/views/dashboard/Curve";
+import AreaEcharts from "@/components/AreaEcharts";
 export default function Dashboard() {
   const refreshRef = useRef(false);
   const [theme] = useState("roma");
@@ -186,7 +185,6 @@ export default function Dashboard() {
         />
       </div>
       <div className="row">
-        <Curve />
       </div>
     </>
   );

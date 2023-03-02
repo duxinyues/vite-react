@@ -18,7 +18,6 @@ const CollapsesIcon = (props: any) => {
     <div
       className="collapsed"
       onClick={() => {
-        console.log("点击");
         changeCollapse(!isCollapses)
       }}
     >

@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 21:10:10
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 22:20:41
+ * @LastEditTime: 2023-03-01 23:32:36
  * @FilePath: \vite-react\src\views\dashboard\pie.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -10,7 +10,6 @@
 import { useEcharts } from "@/hooks/useEcharts";
 
 const Pie = ({ data }: any) => {
-  console.log("pieProps", data);
   const pieData: any = data;
   const option: any = {
     title: {

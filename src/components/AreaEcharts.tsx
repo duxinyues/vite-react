@@ -2,13 +2,13 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 18:28:41
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 18:35:00
- * @FilePath: \vite-react\src\components\areaEcharts.tsx
+ * @LastEditTime: 2023-03-02 15:30:43
+ * @FilePath: \vite-react\src\components\AreaEcharts.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
 import { createArray } from "@/uitls";
 const defaultStyle = { height: "200px", width: "400px", background: "#fff" };

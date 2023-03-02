@@ -2,13 +2,13 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 22:57:00
+ * @LastEditTime: 2023-03-01 23:10:51
  * @FilePath: \vite-react\src\App.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 import { lazy, Suspense } from "react";
-import { useRoutes, HashRouter } from "react-router-dom";
+import { useRoutes, BrowserRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.css";
 import useTheme from "./hooks/useTheme";
@@ -16,7 +16,7 @@ import useTheme from "./hooks/useTheme";
 const Layout = lazy(() => import("@/views/layout"));
 const Login = lazy(() => import("@/views/login"));
 const Dashboard = lazy(() => import("@/views/dashboard"));
-const DataVisualize = lazy(() => import("@/views/dashboard/dataVisualize"));
+const DataScreen = lazy(() => import("@/views/dataScreen"));
 const Home = lazy(() => import("@/views/home"));
 const NoMatch = lazy(() => import("@/components/NoMatch"));
 
@@ -46,6 +46,7 @@ const Router = ({ token }: any) => {
           path: "/dashboard",
           element: loadRouter(<Dashboard />),
         },
+        { path: "*", element: loadRouter(<NoMatch />) },
       ],
     },
     {
@@ -53,8 +54,8 @@ const Router = ({ token }: any) => {
       element: loadRouter(<Login />),
     },
     {
-      path: "/dataVisualize",
-      element: loadRouter(<DataVisualize />),
+      path: "/dataScreen",
+      element: loadRouter(<DataScreen />),
     },
     { path: "*", element: loadRouter(<NoMatch />) },
   ]);
@@ -65,9 +66,9 @@ function App(props: any) {
   const { weakOrGray } = props;
   useTheme(weakOrGray);
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Router />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 const mapStateToProps = (state: any) => {
