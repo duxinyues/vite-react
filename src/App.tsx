@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 23:10:51
+ * @LastEditTime: 2023-03-05 22:37:54
  * @FilePath: \vite-react\src\App.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -19,6 +19,7 @@ const Dashboard = lazy(() => import("@/views/dashboard"));
 const DataScreen = lazy(() => import("@/views/dataScreen"));
 const Home = lazy(() => import("@/views/home"));
 const NoMatch = lazy(() => import("@/components/NoMatch"));
+const WaterChart = lazy(()=>import("@/views/echarts/waterChart"))
 
 const loadRouter = (children: React.ReactElement) => (
   <Suspense
@@ -31,7 +32,7 @@ const loadRouter = (children: React.ReactElement) => (
     {children}
   </Suspense>
 );
-const Router = ({ token }: any) => {
+const Router = () => {
   const element = useRoutes([
     {
       path: "/",
@@ -45,6 +46,10 @@ const Router = ({ token }: any) => {
         {
           path: "/dashboard",
           element: loadRouter(<Dashboard />),
+        },
+        {
+          path: "/waterChart",
+          element: loadRouter(<WaterChart />),
         },
         { path: "*", element: loadRouter(<NoMatch />) },
       ],

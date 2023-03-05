@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:35:23
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-02 09:19:53
+ * @LastEditTime: 2023-03-02 20:28:15
  * @FilePath: \vite-react\src\store\redux\menu\menu.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -20,16 +20,15 @@ const menuState = [
     router: "/dataScreen",
   },
   {
-    title: "组件",
+    title: "Echarts",
     key: "component",
     router: null,
     children: [
-      // {
-      //   title: "dashboard",
-      //   key: "1-1",
-      //   router: "/dashboard",
-      //   component: "Dashboard",
-      // },
+      {
+        title: "水型图",
+        key: "waterChart",
+        router: "/waterChart",
+      },
     ],
   },
 ];
