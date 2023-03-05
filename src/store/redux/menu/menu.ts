@@ -2,9 +2,9 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:35:23
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-02 20:28:15
+ * @LastEditTime: 2023-03-05 23:06:51
  * @FilePath: \vite-react\src\store\redux\menu\menu.ts
- * @Description:
+ * @Description: 左侧菜单，一般是由后端返回的
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 import * as types from "@/store/types";
@@ -28,6 +28,33 @@ const menuState = [
         title: "水型图",
         key: "waterChart",
         router: "/waterChart",
+      },
+      {
+        title: "柱形图",
+        key: "barChart",
+        router: "/barChart",
+      },
+      {
+        title: "曲线图",
+        key: "curveChart",
+        router: "/curveChart",
+      },
+      {
+        title: "曲线面积图",
+        key: "smoothChart",
+        router: "/smoothChart",
+      },
+    ],
+  },
+  {
+    title: "错误页面",
+    key: "error",
+    router: null,
+    children: [
+      {
+        title: "403",
+        key: "403",
+        router: "/403",
       },
     ],
   },
