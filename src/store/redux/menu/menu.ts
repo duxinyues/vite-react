@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:35:23
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-05 23:06:51
+ * @LastEditTime: 2023-03-06 15:48:00
  * @FilePath: \vite-react\src\store\redux\menu\menu.ts
  * @Description: 左侧菜单，一般是由后端返回的
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -20,8 +20,25 @@ const menuState = [
     router: "/dataScreen",
   },
   {
-    title: "Echarts",
+    title: "组件",
     key: "component",
+    router: null,
+    children: [
+      {
+        title: "基础表单",
+        key: "basicsForm",
+        router: "/basicsForm",
+      },
+      {
+        title: "搜索表单",
+        key: "searchForm",
+        router: "/searchForm",
+      },
+    ],
+  },
+  {
+    title: "Echarts",
+    key: "Echarts",
     router: null,
     children: [
       {

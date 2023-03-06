@@ -18,10 +18,6 @@ const errorRouter: Array<RouteObject> = [
     element: lazyLoad(
       React.lazy(() => import("@/components/ErrorMessage/403"))
     ),
-    meta: {
-      title: "403页面",
-      key: "403",
-    },
   },
   {
     path: "*",
