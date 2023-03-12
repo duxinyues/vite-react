@@ -10,10 +10,37 @@ import AddTeam from "./img/add_team.png";
 import Today from "./img/today.png";
 import sum from "./img/book_sum.png";
 
+type BackendUser = {
+  id: number;
+  name: string;
+  disabled: boolean;
+};
+
+type FrontendUser = {
+  id: number;
+  name: string;
+};
 const defaultPieData = [
   { value: 500, name: "GitHub 访问量" },
   { value: 1000, name: "官网 访问量" },
 ];
+const formatDate = (str) => {
+  const newTime = new Date(str);
+  const year = newTime.getFullYear();
+  const month = newTime.getMonth() + 1;
+  let day = newTime.getDate();
+  let hours = newTime.getHours();
+  let min = newTime.getMinutes();
+  let sec = newTime.getSeconds();
+
+  day = day >= 10 ? day : "0" + day;
+  hours = hours >= 10 ? hours : "0" + hours;
+  min = min >= 10 ? min : "0" + min;
+  sec = sec >= 10 ? sec : "0" + sec;
+
+  return `${year}-${month}-${day} ${hours}:${min}:${sec}`;
+};
+
 const Home = () => {
   const [pieData, setPieData] = useState<any>(defaultPieData);
   const [date, setDate] = useState(1);
