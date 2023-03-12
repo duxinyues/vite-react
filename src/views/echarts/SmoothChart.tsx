@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import * as echarts from "echarts";
-import { createArray } from "@/uitls";
+import { createArray } from "@/utils";
 export default function SmoothChart() {
   const data = useRef(createArray(10, 500, 8));
   useEffect(() => {

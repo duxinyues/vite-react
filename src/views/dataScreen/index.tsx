@@ -10,7 +10,7 @@
 import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.scss";
-import { randomNum } from "@/uitls";
+import { randomNum } from "@/utils";
 import DataTime from "./components/Time";
 import titleImg from "./img/dataScreen-title.png";
 import ChinaMap from "./components/ChinaMap";

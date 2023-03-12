@@ -1,5 +1,5 @@
 import { useEcharts } from "@/hooks/useEcharts";
-import { createArray } from "@/uitls";
+import { createArray } from "@/utils";
 
 function CurveCharts() {
   const option = {

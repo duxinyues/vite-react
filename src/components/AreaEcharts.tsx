@@ -10,7 +10,7 @@
 
 import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
-import { createArray } from "@/uitls";
+import { createArray } from "@/utils";
 const defaultStyle = { height: "200px", width: "400px", background: "#fff" };
 export default function AreaEcharts() {
   const data = useRef(createArray(10, 500, 8));

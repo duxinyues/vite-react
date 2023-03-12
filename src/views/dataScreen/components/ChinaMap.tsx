@@ -9,7 +9,7 @@
  */
 import { useEcharts } from "@/hooks/useEcharts";
 import { EChartsOption } from "echarts";
-import echarts from "@/uitls/echarts";
+import echarts from "@/utils/echarts";
 import chinaJson from "./china.json";
 import "./ChinaMap.scss";
 

@@ -8,7 +8,7 @@
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 import { useEcharts } from "@/hooks/useEcharts";
-import { createArray } from "@/uitls";
+import { createArray } from "@/utils";
 
 function BarChart() {
   const data: any = createArray(10, 1000, 15);

@@ -10,7 +10,7 @@
 import { useState, useEffect, useRef } from "react";
 import Echarts from "@/components/HocEcharts";
 import "./index.scss";
-import { createArray } from "@/uitls";
+import { createArray } from "@/utils";
 import AreaEcharts from "@/components/AreaEcharts";
 export default function Dashboard() {
   const refreshRef = useRef(false);

@@ -10,7 +10,7 @@
 import { useEcharts } from "@/hooks/useEcharts";
 import { EChartsOption } from "echarts";
 import "./OverNext30Chart.scss";
-import { randomNum } from "@/uitls";
+import { randomNum } from "@/utils";
 function OverNext30Chart({
   unit = ["下单量"],
   data = new Array(30).fill("").map((val) => {
