@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 15:16:23
+ * @LastEditTime: 2023-03-12 15:27:20
  * @FilePath: \vite-react\vite.config.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -49,7 +49,7 @@ export default defineConfig(({ mode }) => {
       proxy: {
         // 带选项写法：http://localhost:5173/api/bar -> http://jsonplaceholder.typicode.com/bar
         '/api': {
-          target: 'http://localhost:8098',
+          target: 'http://47.108.65.133:8098',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
         },

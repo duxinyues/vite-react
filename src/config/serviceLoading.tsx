@@ -8,7 +8,7 @@ export const showFullScreenLoading = () => {
     let dom = document.createElement("div");
     dom.setAttribute("id", "loading");
     document.body.appendChild(dom);
-    ReactDOM.createRoot(dom).render(<Loading />);
+    // ReactDOM.createRoot(dom).render(<Loading />);
   }
   needLoadingRequestCount++;
 };

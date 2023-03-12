@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:35:23
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-08 16:34:57
+ * @LastEditTime: 2023-03-12 15:53:34
  * @FilePath: \vite-react\src\store\redux\menu\menu.ts
  * @Description: 左侧菜单，一般是由后端返回的
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -72,6 +72,16 @@ const menuState = [
         title: "403",
         key: "403",
         router: "/403",
+      },
+      {
+        title: "404",
+        key: "404",
+        router: "/404",
+      },
+      {
+        title: "500",
+        key: "500",
+        router: "/500",
       },
     ],
   },

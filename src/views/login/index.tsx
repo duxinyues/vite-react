@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 16:27:11
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 15:22:10
+ * @LastEditTime: 2023-03-12 16:54:03
  * @FilePath: \vite-react\src\views\login\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -18,8 +18,9 @@ import {
 } from "@ant-design/icons";
 import "./index.scss";
 import { setToken, setUserInfo } from "@/store/redux/global/action";
+import { setAuthButtons, setAuthRouters } from "@/store/redux/auth/action";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation,useHref } from "react-router-dom";
 import { loginApi } from "@/api/modules/login";
 
 function Login(props: any) {
@@ -36,6 +37,9 @@ function Login(props: any) {
       const { data } = await loginApi(form);
       setToken(data?.accessToken);
       setUserInfo({ userName: data?.username });
+      // 获取用户对应的权限路由和按钮权限
+      // setAuthButtons({});
+      // setAuthRouters([])
       message.success(data?.message);
     } finally {
       setLoading(false);
