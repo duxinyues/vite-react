@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 16:27:11
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 17:26:46
+ * @LastEditTime: 2023-03-12 15:22:10
  * @FilePath: \vite-react\src\views\login\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -20,7 +20,7 @@ import "./index.scss";
 import { setToken, setUserInfo } from "@/store/redux/global/action";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import md5 from "js-md5";
+import { loginApi } from "@/api/modules/login";
 
 function Login(props: any) {
   const { setToken, setUserInfo } = props;
@@ -31,16 +31,15 @@ function Login(props: any) {
   const onFinish = async (form: any) => {
     try {
       setLoading(true);
-      if (form.username !== "admin" || form.password !== "123456")
-        return message.error("用户名或者密码错误！");
-      form.password = md5(form.password);
-      // const { data } = await loginApi(form);
-      setToken(`admin_${form.password}`);
-      setUserInfo({ userName: form.username });
-      message.success("登录成功！");
-      navigate("/");
+      // if (form.username !== "admin" || form.password !== "123456")
+      //   return message.error("用户名或者密码错误！");
+      const { data } = await loginApi(form);
+      setToken(data?.accessToken);
+      setUserInfo({ userName: data?.username });
+      message.success(data?.message);
     } finally {
       setLoading(false);
+      navigate("/");
     }
   };
   const onFinishFailed = (error: any) => {

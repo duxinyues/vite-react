@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-02 10:04:23
+ * @LastEditTime: 2023-03-12 15:16:23
  * @FilePath: \vite-react\vite.config.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -26,7 +26,7 @@ const alias: Record<string, string> = {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const { VITE_PUBLIC_PATH, VITE_PORT } = loadEnv(mode, root, "");
+  const { VITE_PUBLIC_PATH, VITE_PORT,VITE_DROP_CONSOLE } = loadEnv(mode, root, "");
   return {
     base: VITE_PUBLIC_PATH,
     root,
@@ -37,13 +37,23 @@ export default defineConfig(({ mode }) => {
       alias,
     },
     clearScreen: false,
+    esbuild: {
+			pure:VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
+		},
     server: {
       host: "0.0.0.0",
       https: false,
       port: VITE_PORT,
       open: true,
       // 本地跨域代理 https://cn.vitejs.dev/config/server-options.html#server-proxy
-      proxy: {},
+      proxy: {
+        // 带选项写法：http://localhost:5173/api/bar -> http://jsonplaceholder.typicode.com/bar
+        '/api': {
+          target: 'http://localhost:8098',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+      },
       // hmr: true,
     },
     build: {
