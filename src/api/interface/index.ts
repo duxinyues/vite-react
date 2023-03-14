@@ -2,14 +2,15 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-12 13:41:57
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 15:11:53
+ * @LastEditTime: 2023-03-14 22:44:36
  * @FilePath: \vite-react\src\api\interface\index.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 export interface Result {
   code: string;
-  msg: string;
+  message: string;
+  
 }
 
 export interface ResultData<T = any> extends Result {
@@ -40,6 +41,7 @@ export namespace Login {
   export interface ResLogin {
     accessToken: string;
     username: string;
-    message:string
+    message:string,
+    data:any
   }
 }

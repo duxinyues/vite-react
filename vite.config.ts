@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-25 19:56:14
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 15:27:20
+ * @LastEditTime: 2023-03-14 23:47:43
  * @FilePath: \vite-react\vite.config.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -10,8 +10,9 @@
 import { defineConfig, loadEnv, UserConfigExport, ConfigEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
-import {viteBuildInfo} from "./build/info";
-import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import'
+import { viteBuildInfo } from "./build/info";
+// import { createStyleImportPlugin, AntdResolve } from "vite-plugin-style-import";
+import vitePluginImp from "vite-plugin-imp";
 
 const root: string = process.cwd();
 
@@ -26,20 +27,33 @@ const alias: Record<string, string> = {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const { VITE_PUBLIC_PATH, VITE_PORT,VITE_DROP_CONSOLE } = loadEnv(mode, root, "");
+  const { VITE_PUBLIC_PATH, VITE_PORT, VITE_DROP_CONSOLE } = loadEnv(
+    mode,
+    root,
+    ""
+  );
   return {
     base: VITE_PUBLIC_PATH,
     root,
-    plugins: [react(),viteBuildInfo(),createStyleImportPlugin({
-      resolves:[AntdResolve()]
-    })],
+    plugins: [
+      react(),
+      viteBuildInfo(),
+      vitePluginImp({
+        libList: [
+          {
+            libName: "antd",
+            style: (name) => `antd/es/${name}/style`,
+          },
+        ],
+      }),
+    ],
     resolve: {
       alias,
     },
     clearScreen: false,
     esbuild: {
-			pure:VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
-		},
+      pure: VITE_DROP_CONSOLE ? ["console.log", "debugger"] : [],
+    },
     server: {
       host: "0.0.0.0",
       https: false,
@@ -48,10 +62,11 @@ export default defineConfig(({ mode }) => {
       // 本地跨域代理 https://cn.vitejs.dev/config/server-options.html#server-proxy
       proxy: {
         // 带选项写法：http://localhost:5173/api/bar -> http://jsonplaceholder.typicode.com/bar
-        '/api': {
-          target: 'http://47.108.65.133:8098',
+        "/api": {
+          // target: "http://47.108.65.133:8098",
+          target: 'http://localhost:8098',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
+          rewrite: (path) => path.replace(/^\/api/, ""),
         },
       },
       // hmr: true,

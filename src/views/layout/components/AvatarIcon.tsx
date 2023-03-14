@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-28 21:48:56
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 17:46:29
+ * @LastEditTime: 2023-03-14 23:17:50
  * @FilePath: \vite-react\src\views\layout\components\AvatarIcon.tsx
  * @Description: 用户头像
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -55,7 +55,6 @@ const AvatarIcon = () => {
       <Dropdown menu={{ items }}>
         <Avatar
           size={"large"}
-          src="https://profile-avatar.csdnimg.cn/068bb7948d2941d584efb796a79bb704_xuelian3015.jpg!1"
         />
       </Dropdown>
     </>

@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-12 13:47:29
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 18:21:40
+ * @LastEditTime: 2023-03-14 22:35:29
  * @FilePath: \vite-react\src\api\index.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -14,10 +14,6 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse,
 } from "axios";
-import {
-  showFullScreenLoading,
-  tryHideFullScreenLoading,
-} from "@/config/serviceLoading";
 import { ResultData } from "./interface";
 import { ResultEnum } from "@/enums/http";
 import { checkStatus } from "./help/checkStatus";
@@ -41,13 +37,12 @@ class RequestHttp {
 
     // 请求拦截器
     this.service.interceptors.request.use(
-      (config:any) => {
+      (config: any) => {
         NProgress.start();
         axiosCancel.addPending(config);
-        config.headers!.noLoading || showFullScreenLoading();
+        config.headers!.noLoading;
 
         const token: string = store.getState().global.token;
-
         return {
           ...config,
           headers: { ...config.headers, "x-access-token": token },
@@ -64,17 +59,16 @@ class RequestHttp {
         const { data, config } = response;
         NProgress.done();
         axiosCancel.removePending(config);
-        tryHideFullScreenLoading();
-
+        console.log("code", data);
         if (data.code == ResultEnum.OVERDUE) {
           store.dispatch(setToken(""));
-          message.error(data.msg);
+          message.error(data.message);
           window.location.hash = "/login";
           return Promise.reject(data);
         }
 
         if (data.code && data.code !== ResultEnum.SUCCESS) {
-          message.error(data.msg);
+          message.error(data.message);
           return Promise.reject(data);
         }
 
@@ -83,8 +77,6 @@ class RequestHttp {
       async (err: AxiosError) => {
         const { response } = err;
         NProgress.done();
-        tryHideFullScreenLoading();
-
         if (err.message.indexOf("timeout") !== -1) {
           return message.error("请求超时，请稍后再试");
         }
@@ -113,5 +105,4 @@ class RequestHttp {
   }
 }
 
-
-export default new RequestHttp(config)
+export default new RequestHttp(config);

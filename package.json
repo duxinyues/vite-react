@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "/",
+  "homepage": "./",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -30,6 +30,7 @@
     "sass-loader": "^13.2.0",
     "screenfull": "^6.0.2",
     "three": "^0.150.1",
+    "vite-plugin-imp": "^2.3.1",
     "watermark-component-for-react": "^1.0.0"
   },
   "devDependencies": {
