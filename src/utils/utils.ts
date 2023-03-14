@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-12 12:19:12
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 13:30:48
+ * @LastEditTime: 2023-03-12 18:20:09
  * @FilePath: \vite-react\src\utils\utils.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -32,9 +32,9 @@ export function localClear() {
 
 // 浏览器默认语言
 export function getBrowserLang() {
-  let browserLang = navigator.language
-    ? navigator.language
-    : navigator.browserLanguage;
+  let browserLang = navigator.language;
+    // ? window.navigator['language']
+    // : window.navigator['browserLanguage'];
   let defaultBrowserLang = "";
 
   if (
@@ -87,11 +87,11 @@ export const searchRoute = (
  */
 export const getBreadCrumbList = (
   path: string,
-  menuList: Menu.MenuOptions[]
+  menuList:any[]
 ) => {
   let tempPath: any[] = [];
   try {
-    const getNodePath = (node: Menu.MenuOptions) => {
+    const getNodePath = (node:any) => {
       tempPath.push(node);
       if (node.path === path) {
         throw new Error("呵呵！结束了");
@@ -114,10 +114,10 @@ export const getBreadCrumbList = (
 };
 
 export const findAllBreadCrumb = (
-  menuList: Menu.MenuOptions[]
+  menuList:any[]
 ): { [key: string]: any } => {
   let handleBreadcrumbList: any = {};
-  const loop = (menuItem: Menu.MenuOptions) => {
+  const loop = (menuItem:any) => {
     if (menuItem?.children?.length) {
       return menuItem.children.forEach((item: any) => loop(item));
     }

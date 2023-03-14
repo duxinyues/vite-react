@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-12 13:47:29
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 14:52:19
+ * @LastEditTime: 2023-03-12 18:21:40
  * @FilePath: \vite-react\src\api\index.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -41,7 +41,7 @@ class RequestHttp {
 
     // 请求拦截器
     this.service.interceptors.request.use(
-      (config: AxiosRequestConfig) => {
+      (config:any) => {
         NProgress.start();
         axiosCancel.addPending(config);
         config.headers!.noLoading || showFullScreenLoading();
@@ -98,8 +98,8 @@ class RequestHttp {
     );
   }
 
-  get<T>(url: string, param?: object, _object = {}): Promise<ResultData<T>> {
-    return this.service.get(url, { param, ..._object });
+  get<T>(url: string, params?: object, _object = {}): Promise<ResultData<T>> {
+    return this.service.get(url, { params, ..._object });
   }
   post<T>(url: string, params?: object, _object = {}): Promise<ResultData<T>> {
     return this.service.post(url, params, _object);
@@ -108,8 +108,8 @@ class RequestHttp {
     return this.service.put(url, params, _object);
   }
 
-  delete<T>(url: string, param?: any, _object = {}): Promise<ResultData<T>> {
-    return this.service.delete(url, { param, ..._object });
+  delete<T>(url: string, params?: any, _object = {}): Promise<ResultData<T>> {
+    return this.service.delete(url, { params, ..._object });
   }
 }
 

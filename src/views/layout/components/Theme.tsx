@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-28 21:10:09
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 16:09:05
+ * @LastEditTime: 2023-03-14 21:02:52
  * @FilePath: \vite-react\src\views\layout\components\Theme.tsx
  * @Description: 主题设置
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -40,7 +40,6 @@ const Theme = (props: any) => {
         open={visible}
         width={320}
       >
-        <Button type="primary">888</Button>
         {/* 全局主题 */}
         <Divider className="divider">全局主题</Divider>
         <div className="theme-item">

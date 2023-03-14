@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-12 15:46:07
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 17:57:12
+ * @LastEditTime: 2023-03-12 18:12:43
  * @FilePath: \vite-react\src\store\redux\auth\index.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -12,10 +12,9 @@ import { AnyAction } from "redux";
 import { AuthState } from "@/store/interface";
 import * as types from "@/store/types";
 
-const authState: AuthState = {
+const authState = {
   authButtons: {},
-  authRouter:  [
-    {
+  authRouter:  [{
       title: "首页",
       key: "home",
       router: "/",
@@ -94,7 +93,7 @@ const authState: AuthState = {
   ],
 };
 
-export const auth = (state: AuthState = authState, action: AnyAction) => {
+export const auth = (state = authState, action: AnyAction) => {
   switch (action.type) {
     case types.SET_AUTH_BUTTONS:
       return {
