@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:53:32
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-15 00:03:43
+ * @LastEditTime: 2023-03-15 17:22:04
  * @FilePath: \vite-react\src\views\layout\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 const { Content, Footer, Sider } = Layout;
 
 function Container(props: any) {
+  console.log("刷新的",props)
   const { footer, isCollapse, token } = props;
   const navigate = useNavigate();
   const router = useLocation()
@@ -69,8 +70,7 @@ function Container(props: any) {
         </Sider>
         <Content className="content">
           <AdHeader />
-          <WaterMarkLayout>
-            <div
+          <div
               style={{
                 margin: "10px",
                 background: "#fff",
@@ -79,7 +79,6 @@ function Container(props: any) {
             >
               <Outlet />
             </div>
-          </WaterMarkLayout>
           {footer && (
             <Footer
               style={{

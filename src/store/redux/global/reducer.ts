@@ -2,13 +2,14 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 00:29:37
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-15 01:44:11
+ * @LastEditTime: 2023-03-15 17:05:46
  * @FilePath: \vite-react\src\store\redux\global\reducer.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 import { AnyAction } from "redux";
 import * as types from "@/store/types";
+import { cloneDeep } from "lodash";
 
 const globalState = {
   token: "",
@@ -27,14 +28,12 @@ const globalState = {
   footer: true,
   waterMark: {
     content: "读心悦",
-    font: {
-      color: { r: 0, g: 0, b: 0, a: 0.15 },
-      fontSize: 16,
-    },
-    zIndex: 1,
+    fontSize: 16,
+    color: { r: 0, g: 0, b: 0, a: 0.15 },
+    zIndex: 1000,
     rotate: -12,
-    gap: [10, 10] as [number, number],
-    offset: [0, 0],
+    width: "100",
+    height: "100",
   },
 };
 
@@ -66,10 +65,9 @@ const globalReducer = (state = globalState, action: AnyAction) => {
         userInfo: action.payload,
       };
     case types.SET_WATERMARK:
-      console.log("====",action.payload)
       return {
         ...state,
-        waterMark: {...action.payload},
+        waterMark: cloneDeep(action.payload),
       };
     default:
       return state;

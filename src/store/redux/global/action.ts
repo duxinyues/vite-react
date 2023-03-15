@@ -2,13 +2,14 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 00:29:46
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-15 01:41:26
+ * @LastEditTime: 2023-03-15 17:00:56
  * @FilePath: \vite-react\src\store\redux\global\action.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 import * as types from "@/store/types";
 import { ThemeConfigProp } from "@/store/interface";
+import { cloneDeep } from "lodash";
 
 export const setToken = (token: string) => ({
   type: types.SET_TOKEN,
@@ -41,9 +42,8 @@ export const setUserInfo = (userInfo: any) => ({
 });
 
 export const setWaterMark = (waterMark: any) => {
-  console.log("水印",waterMark)
-  return ({
+  return {
     type: types.SET_WATERMARK,
-    payload: {...waterMark},
-  })
+    payload: cloneDeep(waterMark),
+  };
 };

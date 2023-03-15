@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 16:27:11
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-14 23:51:36
+ * @LastEditTime: 2023-03-15 15:48:00
  * @FilePath: \vite-react\src\views\login\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -80,7 +80,7 @@ function Login(props: any) {
           <Form
             form={form}
             labelCol={{ span: 5 }}
-            initialValues={{ remember: true }}
+            initialValues={{ remember: true,username:"admin",password:"123456" }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             size="large"
