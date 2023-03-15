@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-05 23:59:58
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 17:11:41
+ * @LastEditTime: 2023-03-14 23:57:38
  * @FilePath: \vite-react\src\routers\modules\error.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -16,7 +16,7 @@ const errorRouter: Array<RouteObject> = [
   {
     path: "/403",
     element: lazyLoad(
-      React.lazy(() => import("@/components/ErrorMessage/403"))
+      React.lazy(() => import("@/components/Error/403"))
     ),
     meta: {
       requiresAuth: false,
@@ -27,7 +27,7 @@ const errorRouter: Array<RouteObject> = [
   {
     path: "/404",
     element: lazyLoad(
-      React.lazy(() => import("@/components/ErrorMessage/404"))
+      React.lazy(() => import("@/components/Error/404"))
     ),
     meta: {
       requiresAuth: false,
@@ -38,7 +38,7 @@ const errorRouter: Array<RouteObject> = [
   {
     path: "/500",
     element: lazyLoad(
-      React.lazy(() => import("@/components/ErrorMessage/500"))
+      React.lazy(() => import("@/components/Error/500"))
     ),
     meta: {
       requiresAuth: false,

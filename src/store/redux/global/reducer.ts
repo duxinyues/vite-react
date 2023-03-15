@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 00:29:37
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 01:41:36
+ * @LastEditTime: 2023-03-15 01:44:11
  * @FilePath: \vite-react\src\store\redux\global\reducer.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -25,6 +25,17 @@ const globalState = {
   breadcrumb: true,
   // 页脚
   footer: true,
+  waterMark: {
+    content: "读心悦",
+    font: {
+      color: { r: 0, g: 0, b: 0, a: 0.15 },
+      fontSize: 16,
+    },
+    zIndex: 1,
+    rotate: -12,
+    gap: [10, 10] as [number, number],
+    offset: [0, 0],
+  },
 };
 
 const globalReducer = (state = globalState, action: AnyAction) => {
@@ -53,6 +64,12 @@ const globalReducer = (state = globalState, action: AnyAction) => {
       return {
         ...state,
         userInfo: action.payload,
+      };
+    case types.SET_WATERMARK:
+      console.log("====",action.payload)
+      return {
+        ...state,
+        waterMark: {...action.payload},
       };
     default:
       return state;

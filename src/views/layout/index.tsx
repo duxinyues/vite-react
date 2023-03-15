@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:53:32
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 16:43:55
+ * @LastEditTime: 2023-03-15 00:03:43
  * @FilePath: \vite-react\src\views\layout\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -22,7 +22,6 @@ function Container(props: any) {
   const { footer, isCollapse, token } = props;
   const navigate = useNavigate();
   const router = useLocation()
-  console.log("路由",router)
   const onChangeRouter = (router: string) => {
     navigate(router);
   };

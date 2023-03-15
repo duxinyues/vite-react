@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-01 00:29:46
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-01 15:55:55
+ * @LastEditTime: 2023-03-15 01:41:26
  * @FilePath: \vite-react\src\store\redux\global\action.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -39,3 +39,11 @@ export const setUserInfo = (userInfo: any) => ({
   type: types.SET_USERINFO,
   payload: userInfo,
 });
+
+export const setWaterMark = (waterMark: any) => {
+  console.log("水印",waterMark)
+  return ({
+    type: types.SET_WATERMARK,
+    payload: {...waterMark},
+  })
+};
