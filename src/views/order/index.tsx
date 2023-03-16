@@ -1,7 +1,18 @@
+/*
+ * @Author: duxinyues yongyuan253015@gmail.com
+ * @Date: 2023-03-16 17:18:50
+ * @LastEditors: duxinyues yongyuan253015@gmail.com
+ * @LastEditTime: 2023-03-17 00:38:14
+ * @FilePath: \vite-react\src\views\order\index.tsx
+ * @Description:
+ * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
+ */
 import { memo, useState } from "react";
 import AdvancedSearchFrom from "@/components/form/advancedSearchFrom";
 import AdvancedTables from "@/components/Table";
+import Permissions from "@/components/Permissions";
 import type { ColumnsType } from "antd/es/table";
+import { Button } from "antd";
 import "./index.scss";
 const formItemLayout = {
   labelCol: { flex: "100px" },
@@ -21,8 +32,11 @@ interface SearchOrderParam {
   finishTimeStart?: string; // 租赁结束日
   deliveryTimeStart?: string; // 交车时间
 }
+const defaultList = [
+  { id: 12, orderCarNo: "29873485734", orderCarStatus: "待支付" },
+];
 const OrderList = memo(() => {
-  const [list, setList] = useState<any[]>([]);
+  const [list, setList] = useState<any[]>(defaultList);
   const [total, setTotal] = useState(0);
   const [paginationParams, setPaginationParams] = useState({
     size: 10,
@@ -115,7 +129,29 @@ const OrderList = memo(() => {
       ],
     },
   ];
-  const orderColumns: ColumnsType<TargetAPI.TargetColumns> = [
+
+  const renderTagBtn = (record: any) => (
+    <div style={{ width: "100px" }}>
+      <Permissions permissionID="amc_order_view">
+        <Button size="small" type="link">
+          查看
+        </Button>
+      </Permissions>
+
+      <Permissions permissionID="amc_order_cancel">
+        <Button size="small" type="link">
+          取消
+        </Button>
+      </Permissions>
+
+      <Permissions permissionID="amc_order_del">
+        <Button size="small" type="link">
+          删除
+        </Button>
+      </Permissions>
+    </div>
+  );
+  const orderColumns: ColumnsType = [
     {
       title: "订单编号",
       dataIndex: "orderCarNo",
@@ -125,15 +161,9 @@ const OrderList = memo(() => {
       title: "订单状态",
       dataIndex: "orderCarStatus",
       align: "center",
-      // render: (params) => renderStatus(params),
     },
     {
       title: "下单方式",
-      dataIndex: "order",
-      align: "center",
-    },
-    {
-      title: "业务类型",
       dataIndex: "order",
       align: "center",
     },
@@ -148,17 +178,7 @@ const OrderList = memo(() => {
       align: "center",
     },
     {
-      title: "车牌号",
-      dataIndex: "order",
-      align: "center",
-    },
-    {
-      title: "司机名称",
-      dataIndex: "order",
-      align: "center",
-    },
-    {
-      title: "所属公司",
+      title: "商品名称",
       dataIndex: "order",
       align: "center",
     },
@@ -168,35 +188,10 @@ const OrderList = memo(() => {
       align: "center",
     },
     {
-      title: "租赁开始日",
-      dataIndex: "applyDeptid",
-      align: "center",
-    },
-    {
-      title: "租赁结束日",
-      dataIndex: "applyDeptname",
-      align: "center",
-    },
-    {
-      title: "租期",
-      dataIndex: "tenancy",
-      align: "center",
-    },
-    {
-      title: "交车时间",
-      dataIndex: "deliveryTime",
-      align: "center",
-    },
-    {
-      title: "非滴滴司机ID",
-      dataIndex: "platformDriverNo",
-      align: "center",
-    },
-    {
       title: "操作",
       dataIndex: "action",
       align: "center",
-      // render: (id, record) => renderTagBtn(record),
+      render: (id, record) => renderTagBtn(record),
     },
   ];
   return (
@@ -226,6 +221,6 @@ const OrderList = memo(() => {
       </div>
     </div>
   );
-}, []);
+});
 
 export default OrderList;

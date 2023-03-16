@@ -21,9 +21,6 @@ function BasicsForm({
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
-      {formData.map((item:any) => (
-        <RenderFormItem item={item} />
-      ))}
       <Form.Item {...tailLayout}>
         <Space>
           <Button type="primary" htmlType="submit">

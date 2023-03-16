@@ -17,8 +17,6 @@ import {
   Upload,
   Cascader,
 } from "antd";
-import type { Moment } from "moment";
-import moment from "moment";
 import { UploadOutlined } from "@ant-design/icons";
 import "../index.scss";
 
@@ -378,9 +376,7 @@ const range = (start: number, end: number) => {
 const disabledRangeTime = () => ({
   disabledMinutes: () => range(1, 30).concat(range(31, 60)),
 });
-const disabledDate = (current: Moment) =>
-  // Can not select days before today
-  current < moment().endOf("day");
+
 /**
  * 表单时间范围选择框
  *
@@ -396,10 +392,7 @@ export function FormTimeRange(props: any) {
         disabled={disabled}
         showTime={{
           hideDisabledOptions: true,
-          defaultValue: [
-            moment("00:00:00", "HH:mm:ss"),
-            moment("23:59:59", "HH:mm:ss"),
-          ],
+          defaultValue: [],
         }}
         format="YYYY-MM-DD HH:mm"
         onChange={onChange}
