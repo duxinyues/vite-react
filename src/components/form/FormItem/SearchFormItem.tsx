@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
+import React from "react";
 import {
   Form,
   Input,
@@ -16,11 +16,11 @@ import {
   Button,
   Upload,
   Cascader,
-} from 'antd';
-import type { Moment } from 'moment';
-import moment from 'moment';
-import { UploadOutlined } from '@ant-design/icons';
-import styles from '../index.scss';
+} from "antd";
+import type { Moment } from "moment";
+import moment from "moment";
+import { UploadOutlined } from "@ant-design/icons";
+import "../index.scss";
 
 const { TextArea } = Input;
 
@@ -32,14 +32,21 @@ const { TextArea } = Input;
  * @returns
  */
 export function FormInput(props: any) {
-  const { disabled, placeholder, onChange, addonAfter, suffix,style, ...formProps } =
-    props;
+  const {
+    disabled,
+    placeholder,
+    onChange,
+    addonAfter,
+    suffix,
+    style,
+    ...formProps
+  } = props;
   return (
     <Form.Item {...formProps}>
       <Input
         allowClear
         disabled={disabled}
-        placeholder={placeholder || '请输入'}
+        placeholder={placeholder || "请输入"}
         addonAfter={addonAfter}
         onChange={onChange}
         suffix={suffix}
@@ -75,7 +82,7 @@ export function RangeFormInput(props: any) {
             <Input
               allowClear
               disabled={disabled}
-              placeholder={placeholder || '请输入'}
+              placeholder={placeholder || "请输入"}
               addonAfter={addonAfter}
               onChange={onChange}
               suffix={suffix}
@@ -90,7 +97,7 @@ export function RangeFormInput(props: any) {
             <Input
               allowClear
               disabled={disabled}
-              placeholder={placeholder || '请输入'}
+              placeholder={placeholder || "请输入"}
               addonAfter={addonAfter}
               onChange={onChange}
               suffix={suffix}
@@ -114,7 +121,7 @@ export function FormInputSearch(props: any) {
     <Form.Item {...formProps}>
       <Input.Search
         allowClear
-        placeholder={placeholder || '请输入'}
+        placeholder={placeholder || "请输入"}
         onChange={onChange}
         disabled={disabled}
         onSearch={onSearch}
@@ -137,7 +144,7 @@ export function FormInputNumber(props: any) {
         <InputNumber
           disabled={disabled}
           formatter={(value) => `${value}%`}
-          parser={(value: any) => value!.replace('%', '')}
+          parser={(value: any) => value!.replace("%", "")}
         />
       ) : (
         <InputNumber
@@ -165,7 +172,7 @@ export function FormPassword(props: any) {
       <Input.Password
         allowClear
         disabled={disabled}
-        placeholder={placeholder || '请输入'}
+        placeholder={placeholder || "请输入"}
         onChange={onChange}
       />
     </Form.Item>
@@ -198,7 +205,7 @@ export function FormSelect(props: any) {
         mode={mode}
         allowClear
         disabled={disabled}
-        placeholder={placeholder || '请选择'}
+        placeholder={placeholder || "请选择"}
         showSearch={showSearch}
         optionFilterProp="children"
         onChange={onChange}
@@ -228,7 +235,7 @@ export function FormCascader(props: any) {
         allowClear
         options={items}
         fieldNames={fieldNames}
-        placeholder={placeholder || '请选择'}
+        placeholder={placeholder || "请选择"}
         disabled={disabled}
         onChange={onChange}
       />
@@ -260,11 +267,11 @@ export function FormTreeSelect(props: any) {
       <TreeSelect
         allowClear
         showSearch
-        style={{ width: '100%' }}
+        style={{ width: "100%" }}
         disabled={disabled}
         treeNodeFilterProp={title}
-        dropdownStyle={dropdownStyle || { maxHeight: 400, overflow: 'auto' }}
-        placeholder={placeholder || '请选择'}
+        dropdownStyle={dropdownStyle || { maxHeight: 400, overflow: "auto" }}
+        placeholder={placeholder || "请选择"}
         treeData={treeData}
         treeDefaultExpandAll={defaultExpandAll}
         onChange={onChange}
@@ -306,17 +313,17 @@ export function FormRadio(props: any) {
 export function FormTime(props: any) {
   const {
     disabled,
-    subtype = 'dateTime',
+    subtype = "dateTime",
     placeholder,
     onChange,
     allowClear = true,
     valueTime,
-    style={width:"100%"},
+    style = { width: "100%" },
     ...formProps
   } = props;
   return (
     <Form.Item {...formProps}>
-      {subtype === 'time' ? (
+      {subtype === "time" ? (
         <TimePicker
           allowClear={allowClear}
           disabled={disabled}
@@ -326,7 +333,7 @@ export function FormTime(props: any) {
           onChange={onChange}
           style={style}
         />
-      ) : subtype === 'date' ? (
+      ) : subtype === "date" ? (
         <DatePicker
           allowClear={allowClear}
           disabled={disabled}
@@ -335,14 +342,14 @@ export function FormTime(props: any) {
           format="YYYY-MM-DD"
           style={style}
         />
-      ) : subtype === 'month' ? (
+      ) : subtype === "month" ? (
         <DatePicker
           allowClear={allowClear}
           disabled={disabled}
           defaultValue={valueTime}
           placeholder={placeholder}
           onChange={onChange}
-          picker='month'
+          picker="month"
           style={style}
         />
       ) : (
@@ -373,7 +380,7 @@ const disabledRangeTime = () => ({
 });
 const disabledDate = (current: Moment) =>
   // Can not select days before today
-  current < moment().endOf('day');
+  current < moment().endOf("day");
 /**
  * 表单时间范围选择框
  *
@@ -389,11 +396,14 @@ export function FormTimeRange(props: any) {
         disabled={disabled}
         showTime={{
           hideDisabledOptions: true,
-          defaultValue: [],
+          defaultValue: [
+            moment("00:00:00", "HH:mm:ss"),
+            moment("23:59:59", "HH:mm:ss"),
+          ],
         }}
         format="YYYY-MM-DD HH:mm"
         onChange={onChange}
-        style={{ width: '100%' }}
+        style={{ width: "100%" }}
       />
     </Form.Item>
   );
@@ -414,7 +424,7 @@ export function FormDateRange(props: any) {
         disabled={disabled}
         format="YYYY-MM-DD"
         onChange={onChange}
-        style={{ width: '100%' }}
+        style={{ width: "100%" }}
       />
     </Form.Item>
   );
@@ -438,7 +448,7 @@ export function FormTextArea(props: any) {
           rows={rows}
           showCount={showCount}
           maxLength={maxLength}
-          placeholder={placeholder || '请输入'}
+          placeholder={placeholder || "请输入"}
         />
       </Form.Item>
     </div>
@@ -479,7 +489,7 @@ export function FormCheckbox(props: any) {
   } = props;
   return (
     <Form.Item {...formProps}>
-      {desc ? <Checkbox disabled={disabled}>{desc}</Checkbox> : ''}
+      {desc ? <Checkbox disabled={disabled}>{desc}</Checkbox> : ""}
 
       {items ? (
         <Checkbox.Group disabled={disabled} defaultValue={defaultValue}>
@@ -493,7 +503,7 @@ export function FormCheckbox(props: any) {
           </Row>
         </Checkbox.Group>
       ) : (
-        ''
+        ""
       )}
     </Form.Item>
   );

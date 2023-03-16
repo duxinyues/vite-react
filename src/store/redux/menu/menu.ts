@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:35:23
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-12 15:53:34
+ * @LastEditTime: 2023-03-16 17:24:17
  * @FilePath: \vite-react\src\store\redux\menu\menu.ts
  * @Description: 左侧菜单，一般是由后端返回的
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -25,15 +25,15 @@ const menuState = [
     router: null,
     children: [
       {
-        title: "基础表单",
+        title: "订单模块",
+        key: "order",
+        router: "/order",
+      },
+      {
+        title: "表单",
         key: "basicsForm",
         router: "/basicsForm",
       },
-      // {
-      //   title: "搜索表单",
-      //   key: "searchForm",
-      //   router: "/searchForm",
-      // },
     ],
   },
   {

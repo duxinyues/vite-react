@@ -1,0 +1,27 @@
+.table {
+    width: 100%;
+  
+  }
+  .pagination{
+    margin-top:12px;
+    text-align: right;
+    :global {
+    .ant-pagination-item{
+      background: #FFFFFF;
+      border-color:$primary-color;
+    }
+    .ant-pagination-item a{
+      color: $primary-color;
+    }
+    .ant-pagination-item-active{
+      background: $primary-color;
+    }
+    .ant-pagination-item-active:hover a{
+      background: $primary-color;
+      color: #fff;
+    }
+    .ant-pagination-item-active a{
+      color: #fff;
+    }
+  }
+  }
