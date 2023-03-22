@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-16 17:18:50
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-17 00:38:14
+ * @LastEditTime: 2023-03-17 01:25:47
  * @FilePath: \vite-react\src\views\order\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -12,8 +12,10 @@ import AdvancedSearchFrom from "@/components/form/advancedSearchFrom";
 import AdvancedTables from "@/components/Table";
 import Permissions from "@/components/Permissions";
 import type { ColumnsType } from "antd/es/table";
-import { Button } from "antd";
+import { Button, Space } from "antd";
 import "./index.scss";
+import { useNavigate } from "react-router-dom";
+
 const formItemLayout = {
   labelCol: { flex: "100px" },
   wrapperCol: { flex: "1" },
@@ -36,6 +38,7 @@ const defaultList = [
   { id: 12, orderCarNo: "29873485734", orderCarStatus: "待支付" },
 ];
 const OrderList = memo(() => {
+  const navigate = useNavigate();
   const [list, setList] = useState<any[]>(defaultList);
   const [total, setTotal] = useState(0);
   const [paginationParams, setPaginationParams] = useState({
@@ -129,9 +132,18 @@ const OrderList = memo(() => {
       ],
     },
   ];
-
+  const btnList = [
+    {
+      text: "新增订单",
+      type: "primary",
+      id: "amc_order_add",
+      onClick: () => {
+        navigate("/addOrder");
+      },
+    },
+  ];
   const renderTagBtn = (record: any) => (
-    <div style={{ width: "100px" }}>
+    <div>
       <Permissions permissionID="amc_order_view">
         <Button size="small" type="link">
           查看
@@ -194,8 +206,21 @@ const OrderList = memo(() => {
       render: (id, record) => renderTagBtn(record),
     },
   ];
+  const renderBtn = () => {
+    return (
+      <Space size={12}>
+        {btnList.map((item: any, index: number) => (
+          <Permissions permissionID={item.id}>
+            <Button {...item} key={index}>
+              {item.text}
+            </Button>
+          </Permissions>
+        ))}
+      </Space>
+    );
+  };
   return (
-    <div className="page">
+    <div className="page" style={{ background: "#fff" }}>
       <div className="search">
         <AdvancedSearchFrom
           searchBtnText="查询"
@@ -206,6 +231,7 @@ const OrderList = memo(() => {
           rows={2}
         />
       </div>
+      <div className="btnList">{renderBtn()}</div>
       <div className="orderList">
         <AdvancedTables
           params={paginationParams}

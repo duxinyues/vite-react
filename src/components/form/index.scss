@@ -1,25 +1,32 @@
 .SearchForm {
-    :global {
-      .ant-btn-link {
-        color: $primary-color;
-        padding: 0;
-      }
-  
-      .ant-form-item-label>label::after {
-        content: ":";
-        position: relative;
-        margin-block: 0;
-        margin-inline-start: 2px;
-        margin-inline-end: 8px;
-      }
-  
-      .ant-btn>.anticon+span,
-      .ant-btn>span+.anticon {
-        margin-left: 5px;
-      }
-    
+  :global {
+    .ant-btn-link {
+      color: $primary-color;
+      padding: 0;
+    }
+
+    .ant-form-item-label > label::after {
+      content: ":";
+      position: relative;
+      margin-block: 0;
+      margin-inline-start: 2px;
+      margin-inline-end: 8px;
+    }
+
+    .ant-btn > .anticon + span,
+    .ant-btn > span + .anticon {
+      margin-left: 5px;
     }
   }
-  .center{
-    text-align: center;
-  }
+}
+.center {
+  text-align: center;
+}
+.component-content {
+  background: #fff;
+  border-radius: $border-radius-base;
+}
+.form {
+  background: #fff;
+  border-radius: $border-radius-base;
+}

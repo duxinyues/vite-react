@@ -15,6 +15,10 @@ const orderRouter: Array<RouteObject> = [
     path: "/order",
     element: lazyLoad(lazy(() => import("@/views/order"))),
   },
+  {
+    path: "/addOrder",
+    element: lazyLoad(lazy(() => import("@/views/order/add"))),
+  },
 ];
 
 export default orderRouter;

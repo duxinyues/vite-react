@@ -2,13 +2,13 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:53:32
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-15 17:22:04
+ * @LastEditTime: 2023-03-17 01:15:06
  * @FilePath: \vite-react\src\views\layout\index.tsx
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
 import { useEffect } from "react";
-import { Outlet, useNavigate ,useLocation} from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Layout, Menu, MenuProps } from "antd";
 import WaterMarkLayout from "./waterMarkLayout";
 import AdHeader from "./header";
@@ -19,10 +19,10 @@ import { connect } from "react-redux";
 const { Content, Footer, Sider } = Layout;
 
 function Container(props: any) {
-  console.log("刷新的",props)
+  console.log("刷新的", props);
   const { footer, isCollapse, token } = props;
   const navigate = useNavigate();
-  const router = useLocation()
+  const router = useLocation();
   const onChangeRouter = (router: string) => {
     navigate(router);
   };
@@ -71,14 +71,14 @@ function Container(props: any) {
         <Content className="content">
           <AdHeader />
           <div
-              style={{
-                margin: "10px",
-                background: "#fff",
-                height: `calc(100% - ${footer?'10':'30'}px)`,
-              }}
-            >
-              <Outlet />
-            </div>
+            style={{
+              margin: "10px",
+              height: `calc(100% - ${footer ? "10" : "30"}px)`,
+              overflowY: "auto",
+            }}
+          >
+            <Outlet />
+          </div>
           {footer && (
             <Footer
               style={{
