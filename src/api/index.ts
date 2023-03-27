@@ -2,7 +2,7 @@
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-03-12 13:47:29
  * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-14 22:35:29
+ * @LastEditTime: 2023-03-27 11:35:03
  * @FilePath: \vite-react\src\api\index.ts
  * @Description:
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
@@ -45,7 +45,10 @@ class RequestHttp {
         const token: string = store.getState().global.token;
         return {
           ...config,
-          headers: { ...config.headers, "x-access-token": token },
+          headers: {
+            ...config.headers,
+            "x-access-token": token, // token
+          },
         };
       },
       (err: AxiosError) => {
