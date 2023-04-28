@@ -1,9 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { Tabs } from "antd";
-import { useEcharts } from "@/hooks/useEcharts";
 import "./index.scss";
 import Pie from "../dashboard/pie";
-import Curve from "../dashboard/Curve";
 import BookSum from "./img/book-sum.png";
 import AddPerson from "./img/add_person.png";
 import AddTeam from "./img/add_team.png";
@@ -125,6 +123,7 @@ const Home = () => {
             <div className="book-echarts">{renderPie}</div>
           </div>
         </div>
+        <div className="charts-box">changeTabs</div>
       </div>
     </div>
   );
