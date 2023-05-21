@@ -89,7 +89,7 @@ const AnnualPhysicalChart = () => {
 		},
 		xAxis: [
 			{
-				name: "(月份)",
+				name: "",
 				type: "category",
 				boundaryGap: false,
 				axisLine: {
