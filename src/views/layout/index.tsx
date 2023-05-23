@@ -19,7 +19,6 @@ import { connect } from "react-redux";
 const { Content, Footer, Sider } = Layout;
 
 function Container(props: any) {
-  console.log("刷新的", props);
   const { footer, isCollapse, token } = props;
   const navigate = useNavigate();
   const router = useLocation();

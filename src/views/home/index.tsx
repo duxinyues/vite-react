@@ -73,6 +73,13 @@ const Home = () => {
     setPieData((data: any) => {
       return newData;
     });
+    window.addEventListener("online",()=>{
+      console.log("联网")
+    })
+
+    window.addEventListener("offline",()=>{
+      console.log("网络不可用")
+    })
   }, [date]);
   const renderPie = useMemo(() => <Pie data={pieData} />, [date]);
   return (
