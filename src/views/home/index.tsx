@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { Tabs } from "antd";
+import { store } from "@/store/store";
 import "./index.scss";
 import Pie from "../dashboard/pie";
 import BookSum from "./img/book-sum.png";
@@ -62,6 +63,7 @@ const Home = () => {
     [date]
   );
   useEffect(() => {
+    console.log("store",store.getState())
     const newData = defaultPieData.map((item) => {
       item.value = Number((item.value * date * Math.random()).toFixed(0));
       return item;
