@@ -9,6 +9,7 @@
  */
 import { legacy_createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import reduxPromise from "redux-promise"
@@ -20,13 +21,14 @@ const storageConfig = {
 };
 // 中间件
 const middleware = [thunk];
+const logger = createLogger()
 
 // 开启redux-devtools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const configStore = persistReducer(storageConfig, reducers);
 // 创建store
 export let store = legacy_createStore(configStore, composeEnhancers(
-  applyMiddleware(...middleware, reduxPromise)
+  applyMiddleware(...middleware, reduxPromise,logger)
 ));
 // 创建持久化的store
 export let persistor = persistStore(store);
