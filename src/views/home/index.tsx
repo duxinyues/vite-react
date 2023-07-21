@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { Tabs } from "antd";
+import { Tabs, Form } from "antd";
 // import { store } from "@/store/store";
 import { connect } from "react-redux";
 import "./index.scss";
@@ -9,6 +9,7 @@ import AddPerson from "./img/add_person.png";
 import AddTeam from "./img/add_team.png";
 import Today from "./img/today.png";
 import sum from "./img/book_sum.png";
+import {  DXFormFilter, DXSelect } from "duxin-design"
 
 type BackendUser = {
   id: number;
@@ -30,6 +31,7 @@ const Home = () => {
   const [pieData, setPieData] = useState<any>(defaultPieData);
   const [date, setDate] = useState(1);
   const [total, setTotal] = useState(0);
+  const [form] = Form.useForm()
   const tabsDate = [
     {
       key: "1",
@@ -76,15 +78,66 @@ const Home = () => {
     setPieData((data: any) => {
       return newData;
     });
-    window.addEventListener("online",()=>{
+    window.addEventListener("online", () => {
       console.log("联网")
     })
 
-    window.addEventListener("offline",()=>{
+    window.addEventListener("offline", () => {
       console.log("网络不可用")
     })
   }, [date]);
   const renderPie = useMemo(() => <Pie data={pieData} />, [date]);
+  const formItemList = [
+    {
+      position: "tab",
+      key: "aa",
+      placeholder: "今天"
+    },
+    {
+      position: "tab",
+      key: "aad",
+      placeholder: "明天"
+    },
+    {
+      position: "show",
+      placeholder: "姓名",
+      type: "input",
+      key: "username",
+      initialValue: "90",
+      rules: [{ required: true, message: '姓名为必填项' }],
+    },
+    {
+      position: "hidden",
+      placeholder: "年龄",
+      type: "input",
+      key: "age",
+      initialValue: "90",
+      // rules: [{ required: true, message: '年龄为必填项'}],
+    }
+  ]
+  const handleFinish = () => {
+    console.log("表单", form)
+    form.validateFields().then(values => {
+      console.log("表单字段", values)
+    }).catch(err => {
+      console.log("err：", err)
+    })
+  }
+  const defaultConfig = {
+    options: [
+      { itemKey: "123", itemValue: "test" },
+      { itemKey: "124", itemValue: "test4" }
+    ],
+    styles: {
+      width: "100px"
+    },
+    otherProps: {
+      allowClear: true,
+      onChange: (value: string, option: any,) => {
+        console.log("value", value, option)
+      }
+    }
+  }
   return (
     <div className="home">
       <div className="top-box">
@@ -133,10 +186,15 @@ const Home = () => {
             <div className="book-echarts">{renderPie}</div>
           </div>
         </div>
-        <div className="charts-box">changeTabs</div>
+        <div className="charts-box">
+          <DXFormFilter formItemList={formItemList}
+            form={form} handleFinish={() => handleFinish()} />
+          <DXSelect config={defaultConfig} />
+        </div>
+
       </div>
     </div>
   );
 };
 
-export default connect()(Home) ;
+export default connect()(Home);
