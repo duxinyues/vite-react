@@ -1,9 +1,9 @@
 /*
  * @Author: duxinyues yongyuan253015@gmail.com
  * @Date: 2023-02-27 17:35:23
- * @LastEditors: duxinyues yongyuan253015@gmail.com
- * @LastEditTime: 2023-03-27 13:34:59
- * @FilePath: \vite-react\src\store\redux\menu\menu.ts
+ * @LastEditors: duxinyues weiyy26445@yunrong.cn
+ * @LastEditTime: 2023-07-31 00:16:44
+ * @FilePath: /vite-react/src/store/redux/menu/menu.ts
  * @Description: 左侧菜单，一般是由后端返回的
  * Copyright (c) 2023 by ${duxinyues} email: ${yongyuan253015@gmail.com}, All Rights Reserved.
  */
@@ -33,6 +33,16 @@ const menuState = [
         title: "表单",
         key: "basicsForm",
         router: "/basicsForm",
+      },
+      // {
+      //   title: "Excel表格",
+      //   key: "excelTable",
+      //   router: "/excel-table",
+      // },
+      {
+        title: "签字",
+        key: "canvas-sign",
+        router: "/canvas-sign",
       },
     ],
   },

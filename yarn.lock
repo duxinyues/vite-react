@@ -3763,6 +3763,11 @@
   "resolved" "https://registry.npmmirror.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz"
   "version" "1.1.0"
 
+"pubsub-js@^1.9.4":
+  "integrity" "sha512-hJYpaDvPH4w8ZX/0Fdf9ma1AwRgU353GfbaVfPjfJQf1KxZ2iHaHl3fAUw1qlJIR5dr4F3RzjGaWohYUEyoh7A=="
+  "resolved" "https://registry.npmjs.org/pubsub-js/-/pubsub-js-1.9.4.tgz"
+  "version" "1.9.4"
+
 "punycode@^2.1.0":
   "integrity" "sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA=="
   "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.3.0.tgz"

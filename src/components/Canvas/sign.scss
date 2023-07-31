@@ -1,0 +1,24 @@
+.container {
+    width: 900px;
+    height: 460px;
+}
+
+.canvasBox {
+    display: flex;
+    flex-direction: column;
+    height: 460px;
+
+    // :global {
+    canvas {
+        cursor: crosshair;
+        border: 2px dashed rgb(212, 29, 29);
+        display: block;
+        width: 900px;
+    }
+
+    // }
+    .greet {
+        padding: 5px;
+        user-select: none;
+    }
+}
