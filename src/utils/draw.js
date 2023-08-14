@@ -2,7 +2,7 @@
  * @Author: duxinyues weiyy26445@yunrong.cn
  * @Date: 2023-07-31 00:33:21
  * @LastEditors: duxinyues weiyy26445@yunrong.cn
- * @LastEditTime: 2023-07-31 00:33:23
+ * @LastEditTime: 2023-08-01 00:25:08
  * @FilePath: /vite-react/src/utils/draw.js
  * @Description: 
  * Copyright (c) 2023 by ${duxinyues} email: ${weiyy26445@yunrong.cn}, All Rights Reserved.
@@ -192,7 +192,8 @@ Draw.prototype = {
     getJPGImage(canvas = this.canvas) {
         return canvas.toDataURL('image/jpeg', 0.5);
     },
-    downloadPNGImage(image) {
+    downloadPNGImage(canvas = this.canvas) {
+        let image = canvas.toDataURL('image/png');
         const url = image.replace(
             'image/png',
             'image/octet-stream;Content-Disposition:attachment;filename=test.png'
